@@ -13,7 +13,7 @@ export class ClienteService {
 
   constructor(private http: Http) { }
 
-  private clienteUrl = 'http://localhost:8080/cliente';
+  private clienteUrl = 'http://localhost:8080/clientes';
 
   getClientes(): Promise<Cliente[]> {
     return this.http.get(this.clienteUrl)
