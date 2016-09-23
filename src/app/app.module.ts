@@ -6,16 +6,20 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { ClienteService } from './cliente/service/cliente.service';
+import { routing } from './app.routing';
+import { VeiculosComponent } from './veiculos/veiculos.component';
+import { AlugarVeiculosComponent } from './alugar-veiculos/alugar-veiculos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClienteComponent
+    ClienteComponent, VeiculosComponent, AlugarVeiculosComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
   providers: [ClienteService],
   bootstrap: [AppComponent]
