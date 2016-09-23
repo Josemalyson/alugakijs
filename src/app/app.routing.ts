@@ -7,6 +7,11 @@ import { AlugarVeiculosComponent } from './alugar-veiculos/alugar-veiculos.compo
 
 const appRoutes: Routes = [
     {
+        path: '',
+        redirectTo: '/',
+        pathMatch: 'full'
+    },
+    {
         path: 'clientes',
         component: ClienteComponent
     },
