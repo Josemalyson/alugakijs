@@ -2,8 +2,10 @@ import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ClienteComponent } from './cliente/cliente.component';
+import { NovoClienteComponent } from './cliente/novo-cliente/novo-cliente.component';
 import { VeiculosComponent } from './veiculos/veiculos.component';
 import { AlugarVeiculosComponent } from './alugar-veiculos/alugar-veiculos.component';
+
 
 const appRoutes: Routes = [
     {
@@ -14,6 +16,10 @@ const appRoutes: Routes = [
     {
         path: 'clientes',
         component: ClienteComponent
+    },
+    {
+        path: 'novoCliente',
+        component: NovoClienteComponent
     },
     {
         path: 'veiculos',
