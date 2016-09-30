@@ -1,14 +1,12 @@
 export class Cliente {
 
-//[{"id":1,"nome":"josemalyson","cpf":8726099446,"email":"josemalyson@gmail.com"}]
-
-    public id: Number;
-    public nome: String;
-    public cpf: String;
-    public email: String;
+    id: number;
+    nome: string;
+    cpf: string;
+    email: string;
 
 
-    constructor(id: Number, nome: String, cpf: String, email: String){
+    constructor(id: number, nome: string, cpf: string, email: string) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
