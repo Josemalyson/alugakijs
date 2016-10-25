@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ClienteComponent } from './cliente/cliente.component';
 import { NovoClienteComponent } from './cliente/novo-cliente/novo-cliente.component';
+import { EditarClienteComponent } from './cliente/editar-cliente/editar-cliente.component';
 import { VeiculosComponent } from './veiculos/veiculos.component';
 import { AlugarVeiculosComponent } from './alugar-veiculos/alugar-veiculos.component';
 
@@ -20,6 +21,10 @@ const appRoutes: Routes = [
     {
         path: 'novoCliente',
         component: NovoClienteComponent
+    },
+    {
+        path: 'editarCliente/:id',
+        component: EditarClienteComponent
     },
     {
         path: 'veiculos',

@@ -5,8 +5,12 @@
       Novo Cliente
     </h3>
 
-    <div class="card-panel red darken-1">
-      <span class="white-text text-darken-1">{{errorMessage}}</span>
+    <div class="card-panel red darken-1" *ngIf="listaMenssagensDeErro.length > 0" >
+      <span class="white-text text-darken-1">
+          <ul>
+            <li *ngFor="let erro of listaMenssagensDeErro" > {{ erro }} </li>  
+          </ul>  
+      </span>
     </div>
 
     <div class="row">

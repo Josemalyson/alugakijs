@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router }            from '@angular/router';
 
 import { ClienteService } from '../service/cliente.service';
 import { Cliente } from '../model/cliente';
+
 
 @Component({
   selector: 'app-novo-cliente',
@@ -11,36 +13,51 @@ import { Cliente } from '../model/cliente';
 export class NovoClienteComponent implements OnInit {
 
   cliente: Cliente;
-  errorMessage: string;
+  listaMenssagensDeErro: string[];
 
-  constructor(private clienteService: ClienteService) { }
+  constructor(
+    private clienteService: ClienteService,
+    private router: Router) { }
 
   ngOnInit() {
     this.cliente = new Cliente(null, "", "", "");
-    this.errorMessage = "";
+    this.listaMenssagensDeErro = [];
   }
 
   salvar(cliente: Cliente) {
 
-    if (cliente.nome == null || cliente.nome == "") {
-      this.errorMessage = "Campo Nome Obrigatorios"
-    }
+    this.verificarCamposObrigatorios();
 
-    if (cliente.cpf == null || cliente.cpf == "") {
-      this.errorMessage.concat(" </ br> Campo CPF Obrigatorios");
-    }
-
-    if (cliente.email == null || cliente.email == "") {
-      this.errorMessage.concat(" </ br> Campo EMAIL Obrigatorios");
-    }
-
-    else {
+    if (this.listaMenssagensDeErro.length <= 0) {
       this.cliente = cliente;
-      this.clienteService
-        .salvar(this.cliente)
-        .then(error => this.errorMessage = <any>error);
+      this.clienteService.salvar(this.cliente);
+      //.then(error => this.listaMenssagensDeErro.push(<any>error));
+      // VERIFICAR QUANDO DER ERRO NO BACKEND NAO LISTAR E APRESENTAR MENSSAGEM DE ERRO.
+      this.listarClientes();
+    }
+
+  }
+
+  verificarCamposObrigatorios(): void {
+
+    this.listaMenssagensDeErro = [];
+
+    if (this.cliente.nome == null || this.cliente.nome == "") {
+      this.listaMenssagensDeErro.push("Campo Nome obrigatório");
+    }
+
+    if (this.cliente.cpf == null || this.cliente.cpf == "") {
+      this.listaMenssagensDeErro.push("Campo CPF obrigatório");
+    }
+
+    if (this.cliente.email == null || this.cliente.email == "") {
+      this.listaMenssagensDeErro.push("Campo EMAIL obrigatório");
     }
   }
 
+  listarClientes(): void {
+    let link = ['/clientes'];
+    this.router.navigate(link);
+  }
 
 }
