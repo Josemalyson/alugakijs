@@ -23,15 +23,15 @@ export class ClienteService {
       .catch(this.handleError);
   }
 
-  getClienteId(id: number): Promise<Cliente>{
-      return this.getClientes()
-                 .then(clientes => clientes.find(cliente => cliente.id === id)); 
+  getClienteId(id: number): Promise<Cliente> {
+    return this.getClientes()
+      .then(clientes => clientes.find(cliente => cliente.id === id));
   }
 
   salvar(cliente: Cliente): Promise<Cliente> {
 
-    let body = JSON.stringify( cliente );
-   
+    let body = JSON.stringify(cliente);
+
     let options = new RequestOptions({ headers: this.headers });
     return this.http.post(this.clienteUrl, body, options)
       .toPromise()
@@ -40,12 +40,21 @@ export class ClienteService {
 
   }
 
-    editar(cliente: Cliente): Promise<Cliente> {
+  editar(cliente: Cliente): Promise<Cliente> {
     const url = `${this.clienteUrl}/`;
     return this.http
-      .put(url, JSON.stringify(cliente), {headers: this.headers})
+      .put(url, JSON.stringify(cliente), { headers: this.headers })
       .toPromise()
       .then(() => cliente)
+      .catch(this.handleError);
+  }
+
+  excluir(cliente: Cliente): Promise<Cliente> {
+    let url = `${this.clienteUrl}/${cliente.id}`;
+    return this.http
+      .delete(url, { headers: this.headers })
+      .toPromise()
+      .then(() => null)
       .catch(this.handleError);
   }
 

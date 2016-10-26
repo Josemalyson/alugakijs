@@ -1,68 +1,80 @@
-<div class="container">
-  <div class="section">
-    <div class="row">
-      <div class="col s9">
-        <h3 class="header orange-text">
-          Listar Clientes
-        </h3>
-      </div>
-      <div class="col s3" style="margin: 1.46rem 0 1.168rem 0;">
-        <a routerLink="/novoCliente" id="novo-button" class="btn waves-effect waves-light orange">
-          <i class="material-icons left">assignment_ind</i> Novo Cliente
-        </a>
-      </div>
-    </div>
+<section id="hearder">
 
-    <nav>
-      <div class="nav-wrapper light-blue">
-        <div class="col s12">
-          <a href="#!" class="breadcrumb">Inicio</a>
-          <a href="#!" class="breadcrumb">Listar Clientes</a>
+  <div class="container">
+    <div class="section">
+      <div class="row">
+        <div class="col s9">
+          <h3 class="header orange-text">
+            Listar Clientes
+          </h3>
+        </div>
+        <div class="col s3" style="margin: 1.46rem 0 1.168rem 0;">
+          <a routerLink="/novoCliente" id="novo-button" class="btn waves-effect waves-light orange">
+            <i class="material-icons left">assignment_ind</i> Novo Cliente
+          </a>
         </div>
       </div>
-    </nav>
 
-    <br />
+      <nav>
+        <div class="nav-wrapper light-blue">
+          <div class="col s12">
+            <a href="#!" class="breadcrumb">Inicio</a>
+            <a href="#!" class="breadcrumb">Listar Clientes</a>
+          </div>
+        </div>
+      </nav>
 
-    <div>
-      <table class="striped">
-        <tr>
-          <th>Id</th>
-          <th>Nome</th>
-          <th>CPF</th>
-          <th>EMAIL</th>
-          <th class="center-align">Opções</th>
-        </tr>
-        <tr *ngFor="let cliente of clientes">
-          <td>{{cliente.id}}</td>
-          <td>{{cliente.nome}}</td>
-          <td>{{cliente.cpf}}</td>
-          <td>{{cliente.email}}</td>
-          <td>
-            <div class="center-align">
-              <a class="waves-effect waves-light btn orange" (click)="editarCliente(cliente)">
-                <i class="material-icons left">mode_edit</i> Editar
-              </a>
+      <br />
 
-              <a class="waves-effect waves-light btn light-blue">
-                <i class="material-icons left">delete</i> Excluir
-              </a>
-            </div>
-          </td>
-        </tr>
-      </table>
+      <section id="mensagem">
+        <div class="card-panel green lighten-3" [hidden]="flMensagem">
+          <span class="green-text text-darken-4"> {{ mensagem }} </span>
+        </div>
+      </section>
 
-      <ul class="pagination">
-        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-        <li class="active light-blue"><a href="#!">1</a></li>
-        <li class="waves-effect"><a href="#!">2</a></li>
-        <li class="waves-effect"><a href="#!">3</a></li>
-        <li class="waves-effect"><a href="#!">4</a></li>
-        <li class="waves-effect"><a href="#!">5</a></li>
-        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-      </ul>
+      <br />
+
+      <div>
+        <table class="striped">
+          <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>EMAIL</th>
+            <th class="center-align">Opções</th>
+          </tr>
+          <tr *ngFor="let cliente of clientes">
+            <td>{{cliente.id}}</td>
+            <td>{{cliente.nome}}</td>
+            <td>{{cliente.cpf}}</td>
+            <td>{{cliente.email}}</td>
+            <td>
+              <div class="center-align">
+                <a class="waves-effect waves-light btn orange" (click)="editarCliente(cliente)">
+                  <i class="material-icons left">mode_edit</i> Editar
+                </a>
+
+                <a class="waves-effect waves-light btn light-blue" (click)="excluirCliente(cliente)">
+                  <i class="material-icons left">delete</i> Excluir
+                </a>
+              </div>
+            </td>
+          </tr>
+        </table>
+
+        <ul class="pagination">
+          <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+          <li class="active light-blue"><a href="#!">1</a></li>
+          <li class="waves-effect"><a href="#!">2</a></li>
+          <li class="waves-effect"><a href="#!">3</a></li>
+          <li class="waves-effect"><a href="#!">4</a></li>
+          <li class="waves-effect"><a href="#!">5</a></li>
+          <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+        </ul>
+
+      </div>
 
     </div>
-
   </div>
-</div>
+
+</section>
