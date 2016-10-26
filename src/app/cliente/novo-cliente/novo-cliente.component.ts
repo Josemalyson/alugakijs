@@ -30,10 +30,11 @@ export class NovoClienteComponent implements OnInit {
 
     if (this.listaMenssagensDeErro.length <= 0) {
       this.cliente = cliente;
-      this.clienteService.salvar(this.cliente);
-      //.then(error => this.listaMenssagensDeErro.push(<any>error));
+      this.clienteService
+          .salvar(this.cliente)
+          .then(c => this.listarClientes());
       // VERIFICAR QUANDO DER ERRO NO BACKEND NAO LISTAR E APRESENTAR MENSSAGEM DE ERRO.
-      this.listarClientes();
+      
     }
 
   }

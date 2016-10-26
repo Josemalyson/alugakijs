@@ -10,6 +10,8 @@ import 'rxjs/Rx';
 @Injectable()
 export class ClienteService {
 
+  headers = new Headers({ 'Content-Type': 'application/json' });
+
   constructor(private http: Http) { }
 
   private clienteUrl = 'http://localhost:8080/clientes';
@@ -21,21 +23,35 @@ export class ClienteService {
       .catch(this.handleError);
   }
 
-  private extractData(res: Response) {
-    let body = res.json();
-    return body || [];
+  getClienteId(id: number): Promise<Cliente>{
+      return this.getClientes()
+                 .then(clientes => clientes.find(cliente => cliente.id === id)); 
   }
 
   salvar(cliente: Cliente): Promise<Cliente> {
 
     let body = JSON.stringify( cliente );
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
+   
+    let options = new RequestOptions({ headers: this.headers });
     return this.http.post(this.clienteUrl, body, options)
       .toPromise()
       .then(this.extractData)
       .catch(this.handleError);
 
+  }
+
+    editar(cliente: Cliente): Promise<Cliente> {
+    const url = `${this.clienteUrl}/`;
+    return this.http
+      .put(url, JSON.stringify(cliente), {headers: this.headers})
+      .toPromise()
+      .then(() => cliente)
+      .catch(this.handleError);
+  }
+
+  private extractData(res: Response) {
+    let body = res.json();
+    return body || [];
   }
 
   private handleError(error: any) {
