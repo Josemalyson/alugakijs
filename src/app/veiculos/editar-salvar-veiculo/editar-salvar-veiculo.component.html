@@ -4,7 +4,7 @@
     <div class="section">
 
       <h3 class="header orange-text">
-        NOVO / EDITAR VEICULOS
+        {{ veiculo.id ? "Editar":"Cadastrar" }} Veículo
       </h3>
 
      <section id="mensagem">
@@ -21,13 +21,13 @@
         <form class="col s12">
 
           <div class="row">
-            <div class="input-field col s6">
-              <input id="marca" type="text" class="validate" [(ngModel)]="veiculo.marca" name="marca">
+            <div class="col s6">
               <label for="marca">Marca</label>
+              <input id="marca" type="text" class="validate" [(ngModel)]="veiculo.marca" name="marca">
             </div>
-            <div class="input-field col s6">
-              <input id="nome" type="text" class="validate" [(ngModel)]="veiculo.nome" name="nome" >
+            <div class="col s6">
               <label for="nome">Nome</label>
+              <input id="nome" type="text" class="validate" [(ngModel)]="veiculo.nome" name="nome" >
             </div>
           </div>
 
