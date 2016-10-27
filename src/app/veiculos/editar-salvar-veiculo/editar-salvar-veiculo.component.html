@@ -1,0 +1,43 @@
+<section id="formularioVeiculo">
+
+  <div class="container">
+    <div class="section">
+
+      <h3 class="header orange-text">
+        NOVO / EDITAR VEICULOS
+      </h3>
+
+      <div class="row">
+        <form class="col s12">
+
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="marca" type="text" class="validate">
+              <label for="marca">Marca</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="nome" type="text" class="validate">
+              <label for="nome">Nome</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <select materialize="material_select" [materializeSelectOptions]="selectOptions">
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+               </select>
+              <label>Materialize Select</label>
+            </div>
+          </div>
+
+        
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+</section>
