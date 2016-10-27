@@ -12,28 +12,56 @@
 
           <div class="row">
             <div class="input-field col s6">
-              <input id="marca" type="text" class="validate">
+              <input id="marca" type="text" class="validate" [(ngModel)]="veiculo.marca" name="marca">
               <label for="marca">Marca</label>
             </div>
             <div class="input-field col s6">
-              <input id="nome" type="text" class="validate">
+              <input id="nome" type="text" class="validate" [(ngModel)]="veiculo.nome" name="nome" >
               <label for="nome">Nome</label>
             </div>
           </div>
 
           <div class="row">
-            <div class="input-field col s12">
-              <select materialize="material_select" [materializeSelectOptions]="selectOptions">
-                  <option value="" disabled selected>Choose your option</option>
-                  <option value="1">Option 1</option>
-                  <option value="2">Option 2</option>
-                  <option value="3">Option 3</option>
+            <div class="col s12">
+
+              <div class="input-field col s6">
+                <select materialize="material_select" 
+                        [materializeSelectOptions]="selectOptions"
+                        name="cor" 
+                        [(ngModel)]="veiculo.cor" >
+                          <option value="" disabled selected>Selecione uma cor</option>
+                          <option *ngFor="let cor of cores" [value]="cor">{{cor}}</option>
                </select>
-              <label>Materialize Select</label>
+                <label>Cor</label>
+              </div>
+
+              <div class="input-field col s6">
+                <select materialize="material_select" 
+                        [materializeSelectOptions]="selectOptions" 
+                        name="qtdPassageiros"
+                        [(ngModel)]="veiculo.qtdPassageiros" >
+                        <option value="" disabled selected>Selecione quant. passageiros</option>
+                        <option value="4">4</option>
+                        <option value="6">6</option>
+                        <option value="8">8</option>
+               </select>
+                <label>Quantidade de passageiros</label>
+              </div>
+
             </div>
           </div>
 
-        
+          <div class="row">
+            <button class="btn waves-effect waves-light orange" 
+                    type="submit" 
+                    name="action" 
+                    (click)="salvarVeiculo()" >
+                    Salvar
+                    <i class="material-icons right orange">send</i>
+          </button>
+          </div>
+
+          <input id="id" type="hidden">
 
         </form>
       </div>

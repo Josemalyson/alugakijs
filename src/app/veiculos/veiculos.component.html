@@ -46,9 +46,9 @@
           </tr>
           <tr *ngFor="let veiculo of veiculos">
             <td>{{ veiculo.id }}</td>
-            <td>{{ veiculo.marca }}</td>
-            <td>{{ veiculo.nome }}</td>
-            <td>{{ veiculo.cor }}</td>
+            <td>{{ veiculo.marca | uppercase }} </td>
+            <td>{{ veiculo.nome | uppercase }}</td>
+            <td>{{ veiculo.cor | uppercase }}</td>
             <td>{{ veiculo.qtdPassageiros }}</td>
             <td>
               <div class="center-align">
