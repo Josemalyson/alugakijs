@@ -36,7 +36,7 @@ const appRoutes: Routes = [
         component: AlugarVeiculosComponent
     },
     {
-        path: 'gerenciarVeiculo',
+        path: 'gerenciarVeiculo/:id',
         component: EditarSalvarVeiculoComponent
     }
 

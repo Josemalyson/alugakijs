@@ -9,7 +9,7 @@
           </h3>
         </div>
         <div class="col s3" style="margin: 1.46rem 0 1.168rem 0;">
-          <a routerLink="/gerenciarVeiculo" id="novo-button" class="btn waves-effect waves-light orange">
+          <a routerLink="/gerenciarVeiculo/null" id="novo-button" class="btn waves-effect waves-light orange">
             <i class="material-icons left">assignment_ind</i> Novo Veículo
           </a>
         </div>
@@ -19,7 +19,7 @@
         <div class="nav-wrapper light-blue">
           <div class="col s12">
             <a href="#!" class="breadcrumb">Inicio</a>
-            <a href="#!" class="breadcrumb">Listar Veículos</a>
+            <a href="/veiculos" class="breadcrumb">Listar Veículos</a>
           </div>
         </div>
       </nav>
@@ -52,11 +52,11 @@
             <td>{{ veiculo.qtdPassageiros }}</td>
             <td>
               <div class="center-align">
-                <a class="waves-effect waves-light btn orange" (click)="editarCliente(cliente)">
+                <a class="waves-effect waves-light btn orange" (click)="editarVeiculo(veiculo)">
                   <i class="material-icons left">mode_edit</i> Editar
                 </a>
 
-                <a class="waves-effect waves-light btn light-blue" (click)="excluirCliente(cliente)">
+                <a class="waves-effect waves-light btn light-blue" (click)="excluirVeiculo(veiculo)">
                   <i class="material-icons left">delete</i> Excluir
                 </a>
               </div>

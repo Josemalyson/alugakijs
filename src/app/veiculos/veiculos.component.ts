@@ -31,4 +31,21 @@ export class VeiculosComponent implements OnInit {
 
   }
 
+  editarVeiculo(veiculo : Veiculo) :void{
+    let link = ['/gerenciarVeiculo/' + veiculo.id];
+    this.router.navigate(link);
+  }
+
+  excluirVeiculo(veiculo : Veiculo) :void{
+    this.veiculoService
+          .excluir(veiculo)
+          .then(() => this.adicionarMensagem())
+          .then(() => this.getVeiculos());
+  }
+
+  private adicionarMensagem() :void{
+    this.mensagem = "Veiculo exluido com sucesso!";
+    this.flMensagem = false;
+  }
+
 }
