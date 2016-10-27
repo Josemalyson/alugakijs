@@ -7,6 +7,16 @@
         NOVO / EDITAR VEICULOS
       </h3>
 
+     <section id="mensagem">
+        <div class="card-panel red lighten-3" [hidden]="flMensagem">
+          <span class="red-text text-darken-4"> 
+              <ul>
+                <li *ngFor="let erro of erros" >{{ erro }}</li>
+              </ul>  
+          </span>
+        </div>
+      </section>
+
       <div class="row">
         <form class="col s12">
 
