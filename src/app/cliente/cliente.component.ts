@@ -4,8 +4,6 @@ import { Router }            from '@angular/router';
 import { Cliente } from './model/cliente';
 import { ClienteService } from './service/cliente.service';
 
-import { Observable } from 'rxjs/Observable';
-
 @Component({
   selector: 'app-cliente',
   templateUrl: './cliente.component.html',
