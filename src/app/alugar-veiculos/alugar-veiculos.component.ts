@@ -12,13 +12,14 @@ export class AlugarVeiculosComponent implements OnInit {
 
   clientes: Cliente[];
   mensagem: string;
-  nome: string;
   clienteSelecionado: Cliente;
 
   constructor(private clienteService: ClienteService) { }
 
   ngOnInit() {
      this.clienteSelecionado = new Cliente(0,"","","");
+     this.clientes = [];
+     this.mensagem = "";
   }
 
   public getClientesPorNome(): void {
