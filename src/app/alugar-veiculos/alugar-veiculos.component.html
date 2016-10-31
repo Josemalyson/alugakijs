@@ -1,7 +1,56 @@
 <div class="container">
-  <div class="section">
-    <h3 class="header orange-text">
-      Alugar Carros
-    </h3>
-  </div>
+	<div class="section">
+
+		<h3 class="header orange-text">
+			Alugar Carros
+		</h3>
+
+		<div class="row">
+			<div class="col s12">
+				<div class="row">
+					<div class="input-field col s12">
+						<i class="material-icons prefix">textsms</i>
+						<input type="text" id="autocomplete-input" class="autocomplete" [(ngModel)]="clienteSelecionado.nome" (keyup)="getClientesPorNome()">
+						<label for="autocomplete-input">Pesquisar Cliente</label>
+
+						<div class="suggestions">
+							<ul class="autocomplete-content dropdown-content">
+								<li *ngFor="let cliente of clientes">
+									<span class="highlight" (click)="selecionarCliente(cliente)"> {{cliente.nome}} </span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<ul materialize="collapsible" data-collapsible="accordion" [hidden]="clienteSelecionado.id == 0">
+			<li>
+				<div class="collapsible-header"><i class="material-icons">perm_identity</i>Informações Do Cliente</div>
+				<div class="collapsible-body">
+					<ul class="collection with-header">
+						<li class="collection-header">
+							<h4 class="teal-text" >{{clienteSelecionado.nome}}</h4>
+						</li>
+						<li class="collection-item">
+							<div>{{clienteSelecionado.email}}
+								<div class="secondary-content">
+									<i class="material-icons">email</i>
+								</div>
+							</div>
+						</li>
+						<li class="collection-item">
+							<div>{{clienteSelecionado.cpf}}
+								<div class="secondary-content">
+									<i class="material-icons">library_books</i>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+
+	</div>
 </div>

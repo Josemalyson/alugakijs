@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Cliente } from '../cliente/model/cliente';
+import { ClienteService } from '../cliente/service/cliente.service';
+
 @Component({
   selector: 'app-alugar-veiculos',
   templateUrl: './alugar-veiculos.component.html',
@@ -7,9 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlugarVeiculosComponent implements OnInit {
 
-  constructor() { }
+  clientes: Cliente[];
+  mensagem: string;
+  nome: string;
+  clienteSelecionado: Cliente;
+
+  constructor(private clienteService: ClienteService) { }
 
   ngOnInit() {
+     this.clienteSelecionado = new Cliente(0,"","","");
   }
 
+  public getClientesPorNome(): void {
+    this.clientes = [];
+
+    if (this.clienteSelecionado.nome != "") {
+      this.clienteService
+        .getClientesPorNome(this.clienteSelecionado.nome)
+        .then(clientes => this.clientes = clientes,
+        error => this.mensagem = <any>error);
+
+    }else{
+       this.clienteSelecionado = new Cliente(0,"","","");
+    }
+  }
+
+  public selecionarCliente(cliente: Cliente): void {
+    this.clienteSelecionado = cliente;
+    this.clientes = [];
+  }
 }

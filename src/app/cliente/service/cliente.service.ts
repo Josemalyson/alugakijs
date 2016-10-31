@@ -23,6 +23,15 @@ export class ClienteService {
       .catch(this.handleError);
   }
 
+  getClientesPorNome(nome: string): Promise<Cliente[]> {
+    const url = `${this.clienteUrl}/nome/${nome}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(this.extractData)
+      .catch(this.handleError);
+  }
+
+
   getClienteId(id: number): Promise<Cliente> {
     return this.getClientes()
       .then(clientes => clientes.find(cliente => cliente.id === id));
