@@ -6,12 +6,14 @@
 		</h3>
 
 		<div class="row">
-			<div class="col s12">
+			<form id="formVeiculo" class="col s12">
 				<div class="row">
-					<div class="input-field col s12">
+
+					<div class="input-field col s6">
 						<i class="material-icons prefix">textsms</i>
-						<input type="text" id="autocomplete-input" class="autocomplete" [(ngModel)]="clienteSelecionado.nome" (keyup)="getClientesPorNome()">
-						<label for="autocomplete-input">Pesquisar Cliente</label>
+						<input type="text" id="autocomplete-cliente" class="autocomplete" [(ngModel)]="clienteSelecionado.nome" (keyup)="getClientesPorNome()"
+							name="nome">
+						<label for="autocomplete-cliente">Pesquisar Cliente</label>
 
 						<div class="suggestions">
 							<ul class="autocomplete-content dropdown-content">
@@ -21,36 +23,92 @@
 							</ul>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
 
-		<ul materialize="collapsible" data-collapsible="accordion" [hidden]="clienteSelecionado.id == 0">
-			<li>
-				<div class="collapsible-header"><i class="material-icons">perm_identity</i>Informações Do Cliente</div>
-				<div class="collapsible-body">
-					<ul class="collection with-header">
-						<li class="collection-header">
-							<h4 class="teal-text" >{{clienteSelecionado.nome}}</h4>
-						</li>
-						<li class="collection-item">
-							<div>{{clienteSelecionado.email}}
-								<div class="secondary-content">
-									<i class="material-icons">email</i>
-								</div>
-							</div>
-						</li>
-						<li class="collection-item">
-							<div>{{clienteSelecionado.cpf}}
-								<div class="secondary-content">
-									<i class="material-icons">library_books</i>
-								</div>
-							</div>
-						</li>
-					</ul>
+					<div class="input-field col s6">
+						<i class="material-icons prefix">textsms</i>
+						<input type="text" id="autocomplete-veiculo" class="autocomplete">
+						<label for="autocomplete-veiculo">Pesquisar Veiculo</label>
+
+						<div class="suggestions">
+							<ul class="autocomplete-content dropdown-content">
+								<li>
+									<span class="highlight"> </span>
+								</li>
+							</ul>
+						</div>
+					</div>
+
 				</div>
-			</li>
-		</ul>
+
+				<div class="row">
+					<div class="col s12">
+						<ul materialize="collapsible" data-collapsible="accordion" [hidden]="clienteSelecionado.id == 0">
+							<li class="col s6">
+								<div class="collapsible-header"><i class="material-icons">perm_identity</i>Informações Do Cliente</div>
+								<div class="collapsible-body">
+									<ul class="collection with-header">
+										<li class="collection-header">
+											<h4 class="teal-text">{{clienteSelecionado.nome}}</h4>
+										</li>
+										<li class="collection-item">
+											<div>{{clienteSelecionado.email}}
+												<div class="secondary-content">
+													<i class="material-icons">email</i>
+												</div>
+											</div>
+										</li>
+										<li class="collection-item">
+											<div>{{clienteSelecionado.cpf}}
+												<div class="secondary-content">
+													<i class="material-icons">library_books</i>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</li>
+
+							<li class="col s6">
+								<div class="collapsible-header"><i class="material-icons">navigation</i>Informações Do Veiculo</div>
+								<div class="collapsible-body">
+									<ul class="collection with-header">
+										<li class="collection-header">
+											<h4 class="teal-text"></h4>
+										</li>
+										<li class="collection-item">
+											<div>
+												<div class="secondary-content">
+													<i class="material-icons">email</i>
+												</div>
+											</div>
+										</li>
+										<li class="collection-item">
+											<div>
+												<div class="secondary-content">
+													<i class="material-icons">library_books</i>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="col s12">
+						<button class="btn waves-effect waves-light orange" type="submit" name="action">
+							Alugar
+							<i class="material-icons right">send</i>
+						</button>
+					</div>
+				</div>
+
+			</form>
+		</div>
 
 	</div>
 </div>
