@@ -8,7 +8,7 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class VeiculoService {
- 
+
   headers = new Headers({ 'Content-Type': 'application/json' });
 
   constructor(private http: Http) { }
@@ -17,14 +17,14 @@ export class VeiculoService {
 
   getVeiculos(): Promise<Veiculo[]> {
     return this.http.get(this.veiculoUrl)
-               .toPromise()
-               .then(this.extractData)
-               .catch(this.handleError);
+      .toPromise()
+      .then(this.extractData)
+      .catch(this.handleError);
   }
 
   getVeiculoId(id: number): Promise<Veiculo> {
     return this.getVeiculos()
-               .then(veiculos => veiculos.find(veiculo => veiculo.id === id));
+      .then(veiculos => veiculos.find(veiculo => veiculo.id === id));
   }
 
 
@@ -33,28 +33,36 @@ export class VeiculoService {
 
     let options = new RequestOptions({ headers: this.headers });
     return this.http.post(this.veiculoUrl, body, options)
-                    .toPromise()
-                    .then(this.extractData)
-                    .catch(this.handleError);
+      .toPromise()
+      .then(this.extractData)
+      .catch(this.handleError);
 
   }
 
   editar(veiculo: Veiculo): Promise<Veiculo> {
     const url = `${this.veiculoUrl}/`;
     return this.http
-                .put(url, JSON.stringify(veiculo), { headers: this.headers })
-                .toPromise()
-                .then(() => veiculo)
-                .catch(this.handleError);
+      .put(url, JSON.stringify(veiculo), { headers: this.headers })
+      .toPromise()
+      .then(() => veiculo)
+      .catch(this.handleError);
   }
 
   excluir(veiculo: Veiculo): Promise<Veiculo> {
     let url = `${this.veiculoUrl}/${veiculo.id}`;
-     return this.http
-                .delete(url, { headers: this.headers })
-                .toPromise()
-                .then(() => null)
-                .catch(this.handleError);
+    return this.http
+      .delete(url, { headers: this.headers })
+      .toPromise()
+      .then(() => null)
+      .catch(this.handleError);
+  }
+
+  getVeiculosPorMaca(marca: string): Promise<Veiculo[]> {
+    const url = `${this.veiculoUrl}/marca/${marca}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(this.extractData)
+      .catch(this.handleError);
   }
 
   private extractData(res: Response) {

@@ -12,6 +12,7 @@ import {MaterializeDirective} from "angular2-materialize";
 import { ClienteComponent } from './cliente/cliente.component';
 import { ClienteService } from './cliente/service/cliente.service';
 import { VeiculoService } from './veiculos/service/veiculo.service';
+import { AlugarVeiculoService } from './alugar-veiculos/service/alugar-veiculo.service';
 import { routing } from './app.routing';
 import { VeiculosComponent } from './veiculos/veiculos.component';
 import { AlugarVeiculosComponent } from './alugar-veiculos/alugar-veiculos.component';
@@ -38,7 +39,8 @@ import { EditarSalvarVeiculoComponent } from './veiculos/editar-salvar-veiculo/e
   ],
   providers: [
     ClienteService,
-    VeiculoService],
+    VeiculoService,
+    AlugarVeiculoService],
   exports: [ MaterializeDirective ],
   bootstrap: [AppComponent]
 })
