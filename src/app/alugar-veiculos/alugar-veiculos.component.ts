@@ -20,6 +20,8 @@ export class AlugarVeiculosComponent implements OnInit {
   clienteSelecionado: Cliente;
   veiculos: Veiculo[];
   veiculoSelecionado: Veiculo;
+  aluguel: Aluguel;
+  flMensagem: boolean = false;
 
   constructor(
     private _clienteService: ClienteService,
@@ -28,10 +30,10 @@ export class AlugarVeiculosComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.clienteSelecionado = new Cliente(0, "", "", "");
+    this.clienteSelecionado = new Cliente();
     this.clientes = [];
 
-    this.veiculoSelecionado = new Veiculo(0, "", "", "", 0);
+    this.veiculoSelecionado = new Veiculo();
     this.veiculos = [];
 
     this.mensagem = "";
@@ -47,7 +49,7 @@ export class AlugarVeiculosComponent implements OnInit {
         error => this.mensagem = <any>error);
 
     } else {
-      this.clienteSelecionado = new Cliente(0, "", "", "");
+      this.clienteSelecionado = new Cliente();
     }
   }
 
@@ -67,7 +69,7 @@ export class AlugarVeiculosComponent implements OnInit {
         .then(error => this.mensagem = <any>error);
 
     } else {
-      this.veiculoSelecionado = new Veiculo(0, "", "", "", 0);
+      this.veiculoSelecionado = new Veiculo();
     }
 
   }
@@ -79,21 +81,25 @@ export class AlugarVeiculosComponent implements OnInit {
 
   public alugar(): void {
     //    this.clienteSelecionado.id, this.veiculoSelecionado.id
-    var aluguel = new Aluguel();
-    aluguel.setIdCliente = this.clienteSelecionado.id;
-    aluguel.setIdVeiculo = this.veiculoSelecionado.id;
-    aluguel.setValorTotal = this.calcularValorTotal(aluguel);
-    this._alugarVeiculoService.alugar(aluguel)
-      .then(message => this.mensagem = <any>message);
+    this.aluguel = new Aluguel();
+    this.aluguel.setCliente = this.clienteSelecionado;
+    this.aluguel.setVeiculo = this.veiculoSelecionado;
+    
+    this._alugarVeiculoService
+        .alugar(this.aluguel)
+        .then(aluguel => this.aluguel =  aluguel);
+        this.montarMensagem();
   }
 
-  private calcularValorTotal(aluguel: Aluguel): number {
+  public montarMensagem(): void{
+       this.mensagem = "Senhor (a) " + this.aluguel.cliente.nome + " "
+                       "Data de devolução: " + this.aluguel.getDataDevolucao + " "
+                       "Valor total: R$ " + this.aluguel.getValorTotal + " "
+                       "Status: Não pago";
 
-    if (aluguel.getKmPecorrido != 0) {
-      return aluguel.getKmPecorrido * 100;
-    } else {
-      return 0;
-    }
-
+        this.flMensagem = true;
+        this.clienteSelecionado = new Cliente();
+        this.veiculoSelecionado = new Veiculo();     
+        this.aluguel = new Aluguel();  
   }
 }

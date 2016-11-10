@@ -20,7 +20,7 @@ export class NovoClienteComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.cliente = new Cliente(null, "", "", "");
+    this.cliente = new Cliente();
     this.listaMenssagensDeErro = [];
   }
 

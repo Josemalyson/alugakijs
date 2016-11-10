@@ -7,12 +7,12 @@ export class Veiculo {
     qtdPassageiros: number;
 
 
-    constructor(id :number, nome :string, marca :string, cor :string, qtdPassageiros :number) {
-        this.id = id;
-        this.nome = nome;
-        this.marca = marca;
-        this.cor = cor;
-        this.qtdPassageiros = qtdPassageiros;
+    constructor() {
+        this.id = 0;
+        this.nome = "";
+        this.marca = "";
+        this.cor = "";
+        this.qtdPassageiros = 0;
     }
 }
 

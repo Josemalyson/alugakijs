@@ -25,7 +25,7 @@ export class EditarClienteComponent implements OnInit {
 
     this.route.params.forEach((params: Params) => {
       this.id = +params['id'];
-      this.cliente = new Cliente(null, "", "", "");
+      this.cliente = new Cliente;
       this.clienteServico
         .getClienteId(this.id)
         .then(cliente => this.cliente = cliente);

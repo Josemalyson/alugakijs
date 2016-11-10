@@ -5,6 +5,12 @@
 			Alugar Carros
 		</h3>
 
+		<section id="mensagem">
+			<div class="card-panel green lighten-3" *ngIf="flMensagem">
+				<span class="green-text text-darken-4"> {{ mensagem }} </span>
+			</div>
+		</section>
+
 		<div class="row">
 			<form id="formVeiculo" class="col s12">
 				<div class="row">

@@ -35,9 +35,9 @@ export class EditarSalvarVeiculoComponent implements OnInit {
       let id = +params['id'];
 
       if (id == null || isNaN(id)) {
-        this.veiculo = new Veiculo(null, "", "", "", 0);
+        this.veiculo = new Veiculo();
       } else {
-        this.veiculo = new Veiculo(null, "", "", "", 0);
+        this.veiculo = new Veiculo();
         this.veiculoService
           .getVeiculoId(id)
           .then(veiculo => this.veiculo = veiculo);

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import { Aluguel } from '../model/aluguel';
+import { Cliente } from '../../cliente/model/cliente';
+import { Veiculo } from '../../veiculos/model/veiculo';
 
 import 'rxjs/Rx';
 
@@ -14,7 +16,7 @@ export class AlugarVeiculoService {
 
   private alugueisUrl = 'http://localhost:8080/alugueis';
 
-  public alugar(aluguel: Aluguel): Promise<Aluguel[]> {
+  public alugar(aluguel: Aluguel): Promise<Aluguel> {
     let body = JSON.stringify(aluguel);
     let options = new RequestOptions({ headers: this.headers });
     return this.http.post(this.alugueisUrl, body, options)

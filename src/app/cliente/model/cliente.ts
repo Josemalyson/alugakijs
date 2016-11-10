@@ -6,10 +6,10 @@ export class Cliente {
     email: string;
 
 
-    constructor(id: number, nome: string, cpf: string, email: string) {
-        this.id = id;
-        this.nome = nome;
-        this.cpf = cpf;
-        this.email = email;
+    constructor() {
+        this.id = 0;
+        this.nome = "";
+        this.cpf = "";
+        this.email = "";
     }
 }

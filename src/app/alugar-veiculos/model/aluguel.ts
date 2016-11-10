@@ -1,19 +1,38 @@
+import { Cliente } from '../../cliente/model/cliente';
+import { Veiculo } from '../../veiculos/model/veiculo';
+
 export class Aluguel {
 
-    dataAluguel: Date;
-    dataDevolucao: number;
+    dataAluguel: string;
+    dataDevolucao: string;
     valorTotal: number;
     kmPecorrido: number;
-    idCliente: number;
-    idVeiculo: number;
+    cliente: Cliente;
+    veiculo: Veiculo;
 
     constructor() {
-        this.dataAluguel = new Date(Date.now());
-        this.dataDevolucao = this.dataAluguel.setDate(3);
+        this.dataAluguel = null;
+        this.dataDevolucao = null;
         this.valorTotal = 0;
         this.kmPecorrido = 0;
-        this.idCliente = 0;
-        this.idVeiculo = 0
+        this.cliente = new Cliente;
+        this.veiculo = new Veiculo;
+    }
+
+    public set setDataAluguel(dataAluguel: string) {
+        this.dataAluguel = dataAluguel;
+    }
+
+    public get getDataAluguel(): string {
+        return this.dataAluguel;
+    }
+
+    public set getDataDevolucao(dataDevolucao: string) {
+        this.dataDevolucao = dataDevolucao;
+    }
+
+    public get setDataDevolucao(): string {
+        return this.dataDevolucao;
     }
 
     public set setValorTotal(v: number) {
@@ -32,20 +51,20 @@ export class Aluguel {
         return this.kmPecorrido;
     }
 
-    public set setIdCliente(v: number) {
-        this.idCliente = v;
+    public set setCliente(cliente: Cliente) {
+        this.cliente = cliente;
     }
 
-    public get getIdCliente(): number {
-        return this.idCliente;
+    public get getIdCliente(): Cliente {
+        return this.cliente;
     }
 
-    public set setIdVeiculo(v: number) {
-        this.idVeiculo = v;
+    public set setVeiculo(veiculo: Veiculo) {
+        this.veiculo = veiculo;
     }
 
-    public get getIdVeiculo(): number {
-        return this.idVeiculo;
+    public get getVeiculo(): Veiculo {
+        return this.veiculo;
     }
 
 
